@@ -4,10 +4,10 @@ metadata:
   name: digicart-ecom-service
 spec:
   selector:
-    app: digicart-ecom  # This should match the `app` label in your Deployment
+    app: digicart-ecom  # This should match the `app` label in our Deployment
   ports:
     - protocol: TCP
       port: 80           # External port (standard HTTP port)
-      targetPort: 3003    # Port on the container where your app is running
+      targetPort: 3003    # Port on the container where  app is running
       nodePort: 30007     # NodePort for external access; Kubernetes will map this port
   type: NodePort           # Type of Service to allow external access via a node's IP
