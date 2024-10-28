@@ -1,0 +1,84 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: digicart-ecom
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: digicart-ecom
+  template:
+    metadata:
+      labels:
+        app: digicart-ecom
+    spec:
+      containers:
+      - name: digicart-ecom
+        image: shamnads306/digicart-ecom:latest
+        ports:
+        - containerPort: 3003
+        env:
+        - name: NODE_ENV
+          value: "production"
+        - name: PORT
+          value: "3003"
+        - name: MONGODB_URL
+          valueFrom:
+            secretKeyRef:
+              name: digicart-secrets
+              key: MONGODB_URL
+        - name: SESSION_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: digicart-secrets
+              key: SESSION_SECRET
+        - name: SMPT_HOST
+          valueFrom:
+            secretKeyRef:
+              name: digicart-secrets
+              key: SMPT_HOST
+        - name: SMPT_USER
+          valueFrom:
+            secretKeyRef:
+              name: digicart-secrets
+              key: SMPT_USER
+        - name: SMPT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: digicart-secrets
+              key: SMPT_PASSWORD
+        - name: ADMIN_EMAIL
+          valueFrom:
+            secretKeyRef:
+              name: digicart-secrets
+              key: ADMIN_EMAIL
+        - name: ADMIN_PASS
+          valueFrom:
+            secretKeyRef:
+              name: digicart-secrets
+              key: ADMIN_PASS
+        - name: CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: digicart-secrets
+              key: CLIENT_ID
+        - name: CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: digicart-secrets
+              key: CLIENT_SECRET
+        - name: CALLBACK_URL
+          valueFrom:
+            secretKeyRef:
+              name: digicart-secrets
+              key: CALLBACK_URL
+        - name: RAZOR_KEYID
+          valueFrom:
+            secretKeyRef:
+              name: digicart-secrets
+              key: RAZOR_KEYID
+        - name: RAZOR_KEYSECRET
+          valueFrom:
+            secretKeyRef:
+              name: digicart-secrets
+              key: RAZOR_KEYSECRET
