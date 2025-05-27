@@ -94,7 +94,7 @@ const loadShopAll=async (req,res,next) => {
             .populate('variants')
 
         const allCategory=await categoryDB.find()
-
+        
         res.render('shopAll',{
             allVariants,allCategory,products,username,
             currentPage: (skip/limit)+1,totalPages,limit

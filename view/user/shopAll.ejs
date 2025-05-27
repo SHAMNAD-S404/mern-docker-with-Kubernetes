@@ -33,16 +33,17 @@
                                 <h5 class="pt-title">Product categories</h5>
                                 <div class="widget-category-list mt-20">
                                     <form action="#">
-                                        <% allCategory.forEach(element=> { %>
-
+                                        <% allCategory.forEach(element => { 
+                                            if (element.name !== "Smart Watch") { %>
+                                        
                                             <div class="widget-category">
                                                 <input type="radio" onclick="categoryFilter('<%= element.name %>')" name="cat-item">
-                                                <label for="cat-item-1">
+                                                <label>
                                                     <%= element.name %>
                                                 </label>
                                             </div>
-
-                                            <% }); %>
+                                        
+                                        <% } }); %>
                                     </form>
                                 </div>
                             </div>

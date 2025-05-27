@@ -5,7 +5,7 @@ const productSchema = new mongoose.Schema ({
     category: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "catogoryModel",
-        requied: true
+        required: true
     },
     
     name :{

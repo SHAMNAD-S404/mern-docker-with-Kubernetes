@@ -8,6 +8,7 @@ yarn-error.log
 
 # Local environment variables
 .env
+.secrets.yaml
 
 # Build directories
 dist/
