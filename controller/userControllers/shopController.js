@@ -79,11 +79,15 @@ const loadShopAll=async (req,res,next) => {
         }
 
 
-        const allVariants=await variantDB.find(searchQuery)
-            .populate('productID')
-            .limit(limit)
-            .skip(skip)
-            .sort(sortCondition)
+        const allVariantsRaw = await variantDB.find(searchQuery)
+                .populate('productID')
+                .limit(limit)
+                .skip(skip)
+                .sort(sortCondition);
+      
+        // Filter out any variants that failed to populate productID
+        const allVariants = allVariantsRaw.filter(v => v.productID !== null);
+        
 
 
         const totalProducts=await variantDB.find(searchQuery).countDocuments();
@@ -94,6 +98,8 @@ const loadShopAll=async (req,res,next) => {
             .populate('variants')
 
         const allCategory=await categoryDB.find()
+
+        console.log(`all products : ${products} :; allCategory : ${allCategory}`);
         
         res.render('shopAll',{
             allVariants,allCategory,products,username,

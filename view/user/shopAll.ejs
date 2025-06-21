@@ -209,7 +209,8 @@
                                         <% if(allVariants && allVariants.productID) %>
                                             <% allVariants.forEach(variant=> {
                                                 let product = variant.productID
-                                                 %>
+                                                if (!product) return; // skip rendering this if productID wasn't populated
+                                            %>
 
                                                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                                                         <div class="product__item product__item-d">
