@@ -98,8 +98,6 @@ const loadShopAll=async (req,res,next) => {
             .populate('variants')
 
         const allCategory=await categoryDB.find()
-
-        console.log(`all products : ${products} :; allCategory : ${allCategory}`);
         
         res.render('shopAll',{
             allVariants,allCategory,products,username,
